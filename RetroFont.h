@@ -35,7 +35,7 @@ namespace RetroFont {
         RF_TILDE = 59, RF_HASHTAG = 60, RF_ASTERISK = 61, RF_FULL_STOP = 62, RF_SPACE = 63
     } eSymbol_t ;
 
-    RF_FontData *initializeFont(void);
+    RF_FontData *InitializeFont(void);
     int StringToSymbols(const char* string, int* symbolBuffer, int bufferSize);
     int CharToSymbol(const char x);
 

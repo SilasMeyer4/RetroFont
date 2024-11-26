@@ -12,7 +12,7 @@ namespace RetroFont {
     * initialize fontData
     * @return pointer for the fontData
     */
-    RF_FontData* initializeFont(void) {
+    RF_FontData* InitializeFont(void) {
         RF_FontData* pFontData = (RF_FontData*) malloc(RF_AMOUNTOFFONTSPRITES * RF_FONTHEIGHT * sizeof(char));
         if (pFontData == NULLPOINTER) {
             return NULLPOINTER;
@@ -613,7 +613,13 @@ namespace RetroFont {
             {'^', RF_CIRCUMFLEX}, {'%', RF_PERCENT}, {'[', RF_BRACKET_OPEN}, {']', RF_BRACKET_CLOSE},
             {'(', RF_PARENTHESIS_OPEN}, {')', RF_PARENTHESIS_CLOSE}, {'{', RF_BRACE_OPEN}, {'}', RF_BRACE_CLOSE},
             {'B', RF_B}, {'D', RF_D}, {'F', RF_F}, {'H', RF_H}, {'~', RF_TILDE}, {'#', RF_HASHTAG},
-            {'*', RF_ASTERISK}, {'.', RF_FULL_STOP}, {' ', RF_SPACE}
+            {'*', RF_ASTERISK}, {'.', RF_FULL_STOP}, {' ', RF_SPACE},
+
+            //lower case values. I want to remove them, but toupper doesn't want to work in C in CharToSymbol
+            {'a', RF_A}, {'m', RF_M}, {'g', RF_G}, {'e', RF_E}, {'o', RF_O}, {'v', RF_V}, {'r', RF_R},
+            {'p', RF_P}, {'s', RF_S}, {'t', RF_T}, {'l', RF_L}, {'c', RF_C}, {'x', RF_X}, {'n', RF_N},
+            {'i', RF_I}, {'j', RF_J}, {'k', RF_K}, {'q', RF_Q}, {'u', RF_U}, {'w', RF_W}, {'y', RF_Y},
+            {'z', RF_Z}, {'b', RF_B}, {'d', RF_D}, {'f', RF_F}, {'h', RF_H}
     };
 
     /**
@@ -632,7 +638,7 @@ namespace RetroFont {
 
         std::string sentence {string};
 
-        for (int counter = 0; counter < bufferSize && !sentence.empty(); counter++)
+        for (int counter = 0; counter < bufferSize && counter < sentence.length(); counter++)
         {
             int symbol = CharToSymbol(sentence[counter]);
             if (symbol == -1)
@@ -647,6 +653,7 @@ namespace RetroFont {
 
     /**
      * returns the symbol of a given char (enum Symbol)
+     * in c lower case char is not supported
      * @param x char
      * @return -1 if error
      */
