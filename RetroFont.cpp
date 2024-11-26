@@ -1,6 +1,8 @@
 #include "RetroFont.h"
 
 #include <cstdlib>
+#include <string>
+#include <unordered_map>
 
 #ifndef RETROFONT_C
 namespace RetroFont {
@@ -10,7 +12,7 @@ namespace RetroFont {
     * initialize fontData
     * @return pointer for the fontData
     */
-    RF_FontData* initializeFont() {
+    RF_FontData* initializeFont(void) {
         RF_FontData* pFontData = (RF_FontData*) malloc(RF_AMOUNTOFFONTSPRITES * RF_FONTHEIGHT * sizeof(char));
         if (pFontData == NULLPOINTER) {
             return NULLPOINTER;
@@ -586,10 +588,77 @@ namespace RetroFont {
         pFontData[RF_FULL_STOP * RF_FONTHEIGHT + 5] = 0b01100000;
         pFontData[RF_FULL_STOP * RF_FONTHEIGHT + 6] = 0b01100000;
 
+        //SPACE
+        pFontData[RF_SPACE * RF_FONTHEIGHT + 0] = 0b00000000;
+        pFontData[RF_SPACE * RF_FONTHEIGHT + 1] = 0b00000000;
+        pFontData[RF_SPACE * RF_FONTHEIGHT + 2] = 0b00000000;
+        pFontData[RF_SPACE * RF_FONTHEIGHT + 3] = 0b00000000;
+        pFontData[RF_SPACE * RF_FONTHEIGHT + 4] = 0b00000000;
+        pFontData[RF_SPACE * RF_FONTHEIGHT + 5] = 0b00000000;
+        pFontData[RF_SPACE * RF_FONTHEIGHT + 6] = 0b00000000;
+
 
         return pFontData;
     }
 
+    std::unordered_map<char, eSymbol_t> charToSymbolMap = {
+            {'A', RF_A}, {'M', RF_M}, {'G', RF_G}, {'E', RF_E}, {'O', RF_O}, {'V', RF_V}, {'R', RF_R},
+            {'P', RF_P}, {'S', RF_S}, {'T', RF_T}, {'0', RF_0}, {'1', RF_1}, {'2', RF_2}, {'3', RF_3},
+            {'4', RF_4}, {'5', RF_5}, {'6', RF_6}, {'7', RF_7}, {'8', RF_8}, {'9', RF_9}, {'L', RF_L},
+            {'C', RF_C}, {'X', RF_X}, {'N', RF_N}, {'I', RF_I}, {'@', RF_DOT}, {'J', RF_J}, {'K', RF_K},
+            {'Q', RF_Q}, {'U', RF_U}, {'W', RF_W}, {'Y', RF_Y}, {'Z', RF_Z}, {':', RF_COLON}, {';', RF_SEMICOLON},
+            {'=', RF_EQUAL}, {'-', RF_MINUS}, {'+', RF_PLUS}, {'>', RF_GREATER_THAN}, {'<', RF_LESS_THAN},
+            {',', RF_COMMA}, {'?', RF_QUESTION_MARK}, {'!', RF_EXCLAMATION_MARK}, {'\\', RF_BACKSLASH},
+            {'/', RF_SLASH}, {'_', RF_UNDERSCORE}, {'|', RF_PIPE}, {'"', RF_QUOTE}, {'\'', RF_APOSTROPHE},
+            {'^', RF_CIRCUMFLEX}, {'%', RF_PERCENT}, {'[', RF_BRACKET_OPEN}, {']', RF_BRACKET_CLOSE},
+            {'(', RF_PARENTHESIS_OPEN}, {')', RF_PARENTHESIS_CLOSE}, {'{', RF_BRACE_OPEN}, {'}', RF_BRACE_CLOSE},
+            {'B', RF_B}, {'D', RF_D}, {'F', RF_F}, {'H', RF_H}, {'~', RF_TILDE}, {'#', RF_HASHTAG},
+            {'*', RF_ASTERISK}, {'.', RF_FULL_STOP}, {' ', RF_SPACE}
+    };
+
+    /**
+     * saves corresponing symbols (enum Symbol) of a sentence in a buffer
+     * @param string
+     * @param symbolBuffer
+     * @param bufferSize
+     * @return -1 if error otherwise 0
+     */
+    int StringToSymbols(const char* string, int* symbolBuffer, int bufferSize)
+    {
+        if (string == NULLPOINTER || symbolBuffer == NULLPOINTER)
+        {
+            return -1;
+        }
+
+        std::string sentence {string};
+
+        for (int counter = 0; counter < bufferSize && !sentence.empty(); counter++)
+        {
+            int symbol = CharToSymbol(sentence[counter]);
+            if (symbol == -1)
+            {
+                return -1;
+            }
+            symbolBuffer[counter] = symbol;
+        }
+
+        return 0;
+    }
+
+    /**
+     * returns the symbol of a given char (enum Symbol)
+     * @param x char
+     * @return -1 if error
+     */
+    int CharToSymbol(const char x)
+    {
+        if (charToSymbolMap.find(x) != charToSymbolMap.end())
+        {
+            return charToSymbolMap[x];
+        }
+
+        return -1;
+    }
 
 #ifndef RETROFONT_C
 }
