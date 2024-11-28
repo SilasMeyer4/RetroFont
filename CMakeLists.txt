@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.27)
 
-set(LIBRARY_VERSION 0.2)
+set(LIBRARY_VERSION 0.3)
 project(RetroFont VERSION ${LIBRARY_VERSION})
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES RetroFont.cpp)
 
@@ -50,8 +50,6 @@ set_target_properties(${LIBRARY_SHARED_NAME} PROPERTIES
  #         VERSION 1.0
         #      SOVERSION 1
 )
-
-set_target_properties(${LIBRARY_SHARED_NAME} PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
 target_include_directories(${LIBRARY_STATIC_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(${LIBRARY_SHARED_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

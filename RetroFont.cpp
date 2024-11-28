@@ -328,13 +328,13 @@ namespace RetroFont {
         pFontData[RF_Y * RF_FONTHEIGHT + 6] = 0b00100000;
 
         //Z
-        pFontData[RF_Y * RF_FONTHEIGHT + 0] = 0b11111000;
-        pFontData[RF_Y * RF_FONTHEIGHT + 1] = 0b00001000;
-        pFontData[RF_Y * RF_FONTHEIGHT + 2] = 0b00010000;
-        pFontData[RF_Y * RF_FONTHEIGHT + 3] = 0b00100000;
-        pFontData[RF_Y * RF_FONTHEIGHT + 4] = 0b01000000;
-        pFontData[RF_Y * RF_FONTHEIGHT + 5] = 0b10000000;
-        pFontData[RF_Y * RF_FONTHEIGHT + 6] = 0b11111000;
+        pFontData[RF_Z * RF_FONTHEIGHT + 0] = 0b11111000;
+        pFontData[RF_Z * RF_FONTHEIGHT + 1] = 0b00001000;
+        pFontData[RF_Z * RF_FONTHEIGHT + 2] = 0b00010000;
+        pFontData[RF_Z * RF_FONTHEIGHT + 3] = 0b00100000;
+        pFontData[RF_Z * RF_FONTHEIGHT + 4] = 0b01000000;
+        pFontData[RF_Z * RF_FONTHEIGHT + 5] = 0b10000000;
+        pFontData[RF_Z * RF_FONTHEIGHT + 6] = 0b11111000;
 
         //:
         pFontData[RF_COLON * RF_FONTHEIGHT + 0] = 0b00000000;
