@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.27)
 
-set(LIBRARY_VERSION 0.3)
+set(LIBRARY_VERSION 0.4)
 project(RetroFont VERSION ${LIBRARY_VERSION})
 
 set(CMAKE_CXX_STANDARD 11)
