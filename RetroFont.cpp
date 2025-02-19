@@ -154,7 +154,7 @@ namespace RetroFont {
         pFontData[RF_6 * RF_FONTHEIGHT + 3] = 0b11111000;
         pFontData[RF_6 * RF_FONTHEIGHT + 4] = 0b10001000;
         pFontData[RF_6 * RF_FONTHEIGHT + 5] = 0b10001000;
-        pFontData[RF_6 * RF_FONTHEIGHT + 6] = 0b10001000;
+        pFontData[RF_6 * RF_FONTHEIGHT + 6] = 0b11111000;
 
         //7
         pFontData[RF_7 * RF_FONTHEIGHT + 0] = 0b11111000;
@@ -310,13 +310,13 @@ namespace RetroFont {
         pFontData[RF_U * RF_FONTHEIGHT + 6] = 0b11111000;
 
         //W
-        pFontData[RF_W * RF_FONTHEIGHT + 0] = 0b10101;
-        pFontData[RF_W * RF_FONTHEIGHT + 1] = 0b10101;
-        pFontData[RF_W * RF_FONTHEIGHT + 2] = 0b10101;
-        pFontData[RF_W * RF_FONTHEIGHT + 3] = 0b10101;
-        pFontData[RF_W * RF_FONTHEIGHT + 4] = 0b10101;
-        pFontData[RF_W * RF_FONTHEIGHT + 5] = 0b11111;
-        pFontData[RF_W * RF_FONTHEIGHT + 6] = 0b11111;
+        pFontData[RF_W * RF_FONTHEIGHT + 0] = 0b10101000;
+        pFontData[RF_W * RF_FONTHEIGHT + 1] = 0b10101000;
+        pFontData[RF_W * RF_FONTHEIGHT + 2] = 0b10101000;
+        pFontData[RF_W * RF_FONTHEIGHT + 3] = 0b10101000;
+        pFontData[RF_W * RF_FONTHEIGHT + 4] = 0b10101000;
+        pFontData[RF_W * RF_FONTHEIGHT + 5] = 0b11111000;
+        pFontData[RF_W * RF_FONTHEIGHT + 6] = 0b11111000;
 
         //Y
         pFontData[RF_Y * RF_FONTHEIGHT + 0] = 0b10001000;
